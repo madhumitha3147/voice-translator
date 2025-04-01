@@ -3,11 +3,14 @@ import TranslatorForm from "./components/TranslatorForm";
 
 const App = () => {
   return (
-    <div className="bg-gray-100 min-h-screen p-10">
-      <h1 className="text-4xl font-bold mb-8 text-center">Voice Translator</h1>
-      <TranslatorForm />
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-8">Voice Translator</h1>
+        <TranslatorForm />
+      </div>
     </div>
   );
 };
+
 
 export default App;

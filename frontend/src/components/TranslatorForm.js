@@ -30,8 +30,8 @@ const TranslatorForm = () => {
     };
 
     return (
-        <div className="p-6 max-w-lg mx-auto bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold mb-4">Voice Translator</h1>
+        <div className="container p-6 max-w-lg bg-white rounded-lg shadow-md">
+           
             <label className="block mb-2">Select Language:</label>
             <select
                 value={selectedLanguage}
