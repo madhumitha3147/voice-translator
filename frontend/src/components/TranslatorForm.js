@@ -31,22 +31,60 @@ const TranslatorForm = () => {
 
     return (
         <div
-            className="min-h-screen flex justify-center items-center bg-cover bg-center"
             style={{
-                backgroundImage: `url('/voice.png')`, 
-                backgroundSize: "cover",
-                backgroundPosition: "center",
+                minHeight: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                //background: "linear-gradient(to bottom right, #d8f3dc, #fcd5ce, #dee2ff)",
             }}
         >
-            <div className="p-6 max-w-lg w-full bg-white bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg text-white border border-gray-300">
-                <h1 className="text-2xl font-bold text-center mb-4">🔊 Voice Translator</h1>
+            <div
+                style={{
+                    width: "100%",
+                    maxWidth: "600px",
+                    padding: "3.5rem",
+                    borderRadius: "1.5rem",
+                    backgroundColor: "rgba(255, 255, 255, 0.1)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    color: "#fff",
+                    boxShadow: "0 8px 30px rgba(0, 0, 0, 0.2)",
+                }}
+            >
+                <div
+                    style={{
+                        border: "2px solid #fff",
+                        borderRadius: "12px",
+                        padding: "12px 20px",
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        backdropFilter: "blur(6px)",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                        margin: "0 auto 20px auto",
+                        width: "fit-content",
+                    }}
+                >
+                    <h1 style={{ fontSize: "28px", fontWeight: "bold", margin: 0 }}>
+                        🌐 Voice Translator
+                    </h1>
+                </div>
 
-                <div className="mb-4">
-                    <label className="block mb-2 font-semibold">🌍 Select Language:</label>
+                <div style={{ marginBottom: "1.5rem" }}>
+                    <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "1.1rem", fontWeight: "600" }}>
+                        🌍 Choose Language
+                    </label>
                     <select
                         value={selectedLanguage}
                         onChange={handleLanguageChange}
-                        className="w-full p-3 border border-gray-300 bg-gray-800 bg-opacity-50 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style={{
+                            width: "100%",
+                            padding: "0.75rem",
+                            backgroundColor: "rgba(0, 0, 0, 0.4)",
+                            color: "white",
+                            borderRadius: "0.5rem",
+                            border: "1px solid gray",
+                            outline: "none",
+                        }}
                     >
                         <option value="en">English</option>
                         <option value="es">Spanish</option>
@@ -59,23 +97,34 @@ const TranslatorForm = () => {
 
                 <button
                     onClick={handleTranslate}
-                    className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-300"
                     disabled={isRecording}
+                    style={{
+                        width: "100%",
+                        padding: "0.75rem",
+                        fontSize: "1.1rem",
+                        fontWeight: "600",
+                        borderRadius: "0.5rem",
+                        backgroundColor: isRecording ? "#6b7280" : "#06b6d4",
+                        cursor: isRecording ? "not-allowed" : "pointer",
+                        color: "#fff",
+                        transition: "background-color 0.3s ease",
+                        border: "none",
+                    }}
                 >
                     {isRecording ? "🎙️ Recording..." : "🎤 Start Translation"}
                 </button>
 
                 {translatedText && (
-                    <div className="mt-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg border border-gray-500">
-                        <h2 className="text-lg font-semibold">📜 Translated Text:</h2>
-                        <p className="mt-2 p-2 bg-gray-700 rounded">{translatedText}</p>
+                    <div style={{ marginTop: "1.5rem", backgroundColor: "rgba(255, 255, 255, 0.1)", padding: "1rem", borderRadius: "0.5rem", border: "1px solid #4b5563" }}>
+                        <h2 style={{ fontSize: "1.1rem", fontWeight: "600", marginBottom: "0.5rem" }}>📜 Translated Text</h2>
+                        <p style={{ backgroundColor: "rgba(0, 0, 0, 0.4)", padding: "0.75rem", borderRadius: "0.5rem", color: "white" }}>{translatedText}</p>
                     </div>
                 )}
 
                 {audioFile && (
-                    <div className="mt-4 p-4 bg-gray-900 bg-opacity-50 rounded-lg border border-gray-500">
-                        <h2 className="text-lg font-semibold">🎵 Translated Audio:</h2>
-                        <audio controls className="mt-2 w-full">
+                    <div style={{ marginTop: "1rem", backgroundColor: "rgba(255, 255, 255, 0.1)", padding: "1rem", borderRadius: "0.5rem", border: "1px solid #4b5563" }}>
+                        <h2 style={{ fontSize: "1.1rem", fontWeight: "600", marginBottom: "0.5rem" }}>🎵 Translated Audio</h2>
+                        <audio controls style={{ width: "100%" }}>
                             <source src={`http://127.0.0.1:5000${audioFile}`} type="audio/mp3" />
                         </audio>
                     </div>
